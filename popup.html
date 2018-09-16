@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   	  <script src = "searchCriteria.js"></script>
-      <script src = "places.js"></script>
 
 
     <title>QuickFinder</title>
@@ -14,8 +14,16 @@
    		<input type ="text" id = "location"> <br>
    		Destination: <br> 
    		<input type = "text" id = "destination"><br> 
-   		<input type="submit" id = "Submit" value="Submit">
+      <input type="radio" name="selection" id="shortest" checked> Vehical<br>
+      <input type="radio" name="selection" id="pedestrian"> Pedestrian<br>
+      <input type="radio" name="selection" id="bicycle"> Bicycle
+   		<input type="submit" id = "Submit" id="Submit">
    </form>
-  Maps information displayed here </h5>
-  </body>
+
+   <textarea id="xmlSource" rows="20" cols="70"></textarea>
+
+
+<div id="r_distance"><b>Distance in miles: <b></div> 
+
+</body>
 </html>
