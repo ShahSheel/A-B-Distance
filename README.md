@@ -1,8 +1,9 @@
 # QuickFinder
-Currently in development.
 
+## How to use
 * Enter Location and Destination
-* Opens google maps in a new tab for you with the searched constraints. 
+* Select how you will get there and click submit
+* Recieve the returend result (in miles)
 
+![A-B Distance](https://github.com/ShahSheel/QuickFinder/blob/master/images/image.png)
 
-![image_quick_finder](https://github.com/ShahSheel/QuickFinder/blob/master/images/image.PNG)
