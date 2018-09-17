@@ -14,8 +14,11 @@ function begin(){
   console.log(mainURL);
   callAjax();
 }
-
-function createURL(){
+/**
+* Reads Location, Destination and the type of commute (Vehical,Pedestrian,Bicycle)
+* Returns URL 
+*/
+ function createURL(){
     if (document.getElementById('location') != null) { var location = document.getElementById("location").value; }
     if (document.getElementById('destination') != null) { var destination = document.getElementById("destination").value; }
 
@@ -37,7 +40,10 @@ function createURL(){
     mainURL = finalURL;
 
 }
-
+/**
+* Reads in the URL 
+* Parses the contents to parseXML
+*/
 function callAjax(){
     console.log("Clicked");
    $.ajax({
@@ -46,17 +52,20 @@ function callAjax(){
     dataType: "XML",
     success: parseXML,
      error: function (request, status, error) {
-        console.log(request.responseText); //Alerts Undefined
+        console.log(request.responseText);
     }
   });
 }
 
- //This method doesn't get called, always fails. 
+/**
+*Reads in the XML in D
+*Print the distance for the first Distance node found 
+*/
 function parseXML(xml) {
   console.log("display xml");
  
-  var ballList = $('distance', xml).get();
-  $.each(ballList, function( index, value ) {
+  var d = $('distance', xml).get();
+  $.each(d, function( index, value ) {
     console.log( index + ": " + value.textContent );
     $('#r_distance').append("<b>Distance in miles: </b>" + value.textContent);
     return false;
