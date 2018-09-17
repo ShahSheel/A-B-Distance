@@ -1,22 +1,23 @@
-document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('Submit').addEventListener('click',init);      
+$(document).ready(function(){
+    $("#Submit").click(function(event){
+        console.log("Clicked");
+       $('#r_distance').empty(); //Empty any stored data
+        begin();
+        event.preventDefault();
+    });
 });
+
 var mainURL;
-function init(){
-  mainURL = url();
+
+function begin(){
+  createURL();
+  console.log(mainURL);
   callAjax();
 }
-function url(){
-    if (document.getElementById('location') != null) {
-    var location = document.getElementById("location").value;
-  }
 
-    if (document.getElementById('destination') != null) {
-    var destination = document.getElementById("destination").value;
-  }
-    if (document.getElementById('destination') != null) {
-    var destination = document.getElementById("destination").value;
-  }
+function createURL(){
+    if (document.getElementById('location') != null) { var location = document.getElementById("location").value; }
+    if (document.getElementById('destination') != null) { var destination = document.getElementById("destination").value; }
 
     var selection = document.querySelector('input[name="selection"]:checked').id;
 
@@ -33,40 +34,32 @@ function url(){
     url4 = url3.concat(combineRoute);
     var endURL = "&doReverseGeocode=false&enhancedNarrative=false&avoidTimedConditions=false"
     finalURL = url4.concat(endURL);
-    return "https://www.mapquestapi.com/directions/v2/route?key=9vyfTMs7Q4JVtr4u5ItN8Fd0YHuw1dqn&from=Cr44ef&to=horsham&outFormat=XML&ambiguities=ignore&routeType=shortest&doReverseGeocode=false&enhancedNarrative=false&avoidTimedConditions=false";
+    mainURL = finalURL;
+
 }
-/** currently this doens't work. 
-returns Object object when having a function, else works without it..but it would be called first rather than from init() 
-**/
+
 function callAjax(){
+    console.log("Clicked");
    $.ajax({
-    type: "GET",
+    type: "GET", 
     url: mainURL,
     dataType: "XML",
     success: parseXML,
+     error: function (request, status, error) {
+        console.log(request.responseText); //Alerts Undefined
+    }
   });
 }
 
+ //This method doesn't get called, always fails. 
 function parseXML(xml) {
-  $('#xmlSource').val( xmlToString(xml) );
+  console.log("display xml");
+ 
   var ballList = $('distance', xml).get();
   $.each(ballList, function( index, value ) {
     console.log( index + ": " + value.textContent );
-    $('#r_distance').append(value.textContent);
+    $('#r_distance').append("<b>Distance in miles: </b>" + value.textContent);
     return false;
   });
   
 }
-  
-function xmlToString(xmlData) { 
-  var xmlString;
-  if (window.ActiveXObject){
-    xmlString = xmlData.xml;
-  } else{
-    xmlString = (new XMLSerializer()).serializeToString(xmlData);
-  }
-  return xmlString;
-}  
-
-
-
