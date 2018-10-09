@@ -12,7 +12,7 @@ Currently working for Google Chrome only.
 ## How to use
 * Enter Location and Destination
 * Select how you will get there and click submit
-* Recieve the returend result (in miles)
+* Recieve the returned result (in miles)
 
 ![A-B Distance](https://github.com/ShahSheel/QuickFinder/blob/master/images/image.png)
 
