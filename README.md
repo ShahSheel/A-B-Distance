@@ -1,7 +1,7 @@
 # A-B Distance
 Currently working for Google Chrome only.
 
-## To download:
+## Install:
 * Download and extract the zip file to your desired location
 * Open <a> chrome://extensions </a>
 * Click `Load unpacked` 
@@ -9,7 +9,7 @@ Currently working for Google Chrome only.
 
 
 
-## How to use
+## Use:
 * Enter Location and Destination
 * Select how you will get there and click submit
 * Recieve the returned result (in miles)
